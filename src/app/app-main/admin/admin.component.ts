@@ -58,7 +58,9 @@ export class AdminComponent implements OnInit {
     this.displayedColumns = ['id', 'name', 'surname'];
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('going to add ngRx Library in this project');
+  }
 
   ngAfterViewInit() {
     this.userDataSource.paginator = this.paginator;
