@@ -1,0 +1,63 @@
+<div class="header-main">
+    <div class="logo">
+      <img
+        src="./../../../assets/images/logo_school.png"
+        alt=""
+        width="50"
+      />
+    </div>
+    <ul
+      [ngClass]="{ ConnectWalletRight: !isAdmin && !isInstructor && !isBidder }"
+    >
+      <div class="mt-4 px-2" *ngIf="isAdmin"></div>
+      <li (click)="toggleSidebar()" *ngIf="isAdmin || isInstructor">
+        <a routerLink="/profile" class="profile">Profile</a>
+      </li>
+      <div class="mt-4 px-2" *ngIf="isAdmin"></div>
+      <li (click)="toggleSidebar()" *ngIf="isAdmin">
+        <a routerLink="/list-instructors" class="profile">Instructors</a>
+      </li>
+      <div class="mt-4 px-2" *ngIf="isInstructor"></div>
+      <li (click)="toggleSidebar()" *ngIf="isInstructor">
+        <a routerLink="/my-banners" class="profile">My Banners</a>
+      </li>
+      <div class="mt-4 px-2" *ngIf="isBidder"></div>
+      <li (click)="toggleSidebar()" *ngIf="isBidder">
+        <a routerLink="/auction-list" class="profile">Home</a>
+      </li>
+      <div class="mt-4 px-2" *ngIf="isBidder"></div>
+      <li *ngIf="isBidder">
+        <a routerLink="/security" (click)="toggleSidebar()" class="profile"
+          >Profile</a
+        >
+      </li>
+  
+      <div class="mt-4 px-2" *ngIf="isBidder"></div>
+      <li *ngIf="isBidder">
+        <a routerLink="/bidprofile" (click)="toggleSidebar()" class="profile"
+          >Bidder Profile</a
+        >
+      </li>
+      <li
+        style="border: 1px solid white; border-radius: 25px; padding: 3px"
+        *ngIf="!isBidder && !isAdmin && !isInstructor && !isLoading"
+      >
+        <a style="cursor: pointer; margin: 18px 21px !important">
+          Connect Wallet</a
+        >
+      </li>
+      <li
+        style="border: 1px solid white; border-radius: 25px; padding: 3px"
+        *ngIf="!isBidder && !isAdmin && !isInstructor && isLoading"
+      >
+        <a style="cursor: pointer; margin: 18px 21px !important">
+           <span ><img width="25px" src="./../../../assets/Loader1.gif" alt=""></span> </a
+        >
+      </li>
+  
+      <div class="mt-4 px-2" *ngIf="isBidder || isAdmin || isInstructor"></div>
+      <li *ngIf="isBidder || isAdmin || isInstructor" (click)="Logout()">
+        <a style="cursor: pointer"> Logout</a>
+      </li>
+    </ul>
+  </div>

@@ -1,0 +1,3 @@
+<app-singup-intro *ngIf="!createWallet" (isImportWalletClicked)="isImportWalletClicked($event)"></app-singup-intro>
+
+<app-create-wallet *ngIf="createWallet"></app-create-wallet>

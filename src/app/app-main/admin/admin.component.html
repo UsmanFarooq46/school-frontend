@@ -1,0 +1,29 @@
+<div class="user-section px-4">
+    <div class="h2">
+        All Users
+    </div>
+    <div fxFlex="100%" fxLayout="row">
+        <table class="mat_table" mat-table [dataSource]="userDataSource">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> First Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="surname">
+                <th mat-header-cell *matHeaderCellDef> Surname </th>
+                <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+    </div>
+    <!-- <mat-paginator [pageSizeOptions]="[2, 5, 10]" showFirstLastButtons></mat-paginator> -->
+</div>
