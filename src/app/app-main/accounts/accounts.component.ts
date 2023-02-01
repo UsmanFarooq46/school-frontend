@@ -1,3 +1,4 @@
+import { ToasterService } from './../../shared-services/toaster.service';
 import { AccountService } from './account.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -18,7 +19,8 @@ export class AccountsComponent {
   isMatched: boolean = true;
   innerHeight: number = 600;
   constructor(
-    private snackBar: MatSnackBar,
+    // private snackBar: MatSnackBar,
+    private toaster: ToasterService,
     private formBuilder: FormBuilder,
     private router: Router,
     private service: AccountService,
@@ -59,11 +61,7 @@ export class AccountsComponent {
       },
       (err) => {
         console.log('error L', err);
-        this.snackBar.open(err.error.message, 'X', {
-          duration: 4000,
-          verticalPosition: 'top',
-          horizontalPosition: 'right',
-        });
+        this.toaster.openSnackBar(err.error.message || 'Connnection Error');
         this.isMatched = false;
       }
     );

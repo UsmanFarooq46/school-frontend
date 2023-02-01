@@ -1,3 +1,4 @@
+import { AuthurizationInterceptor } from './interceptor/authurization.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './shared-ui/header/header.component';
 import { ClipboardModule } from 'ngx-clipboard';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FooterComponent } from './shared-ui/footer/footer.component';
 import { MainComponent } from './shared-ui/main/main.component';
 // import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -29,7 +30,13 @@ import { MainComponent } from './shared-ui/main/main.component';
     ClipboardModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthurizationInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
